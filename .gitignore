@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Ambiente virtual
+venv/
+env/
+.env/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Dados
+data/
+*.csv
+*.h5
+
+# Modelos
+models/
+*.h5
+
+# Logs
+*.log
+
+# Editor de Texto
+*.swp
+*~
+*.bak
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Sistema
+.DS_Store
+Thumbs.db

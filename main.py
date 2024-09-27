@@ -1,6 +1,6 @@
 import tensorflow as tf
-from tensorflow.keras import datasets, layers, models
-from tensorflow.keras.optimizers import Adam
+from tensorflow.keras import datasets, layers, models # type: ignore
+from tensorflow.keras.optimizers import Adam # type: ignore
 import matplotlib.pyplot as plt
 
 # Passo 1: Carregar o conjunto de dados MNIST
@@ -26,18 +26,12 @@ model = models.Sequential([
 ])
 
 # Passo 5: Compilar o modelo
-'''
-model.compile(optimizer='adam',
-              loss='sparse_categorical_crossentropy',
-              metrics=['accuracy'])
-'''
-
 model.compile(optimizer=Adam(learning_rate=0.0001), 
               loss='sparse_categorical_crossentropy', 
               metrics=['accuracy'])
 
 # Passo 6: Treinar o modelo e armazenar o histórico
-history = model.fit(x_train, y_train, epochs=5, validation_data=(x_test, y_test))
+history = model.fit(x_train, y_train, epochs=5, batch_size=32, validation_data=(x_test, y_test))
 
 # Passo 7: Avaliar o modelo
 test_loss, test_acc = model.evaluate(x_test, y_test)
@@ -47,7 +41,7 @@ print(f"Test accuracy: {test_acc}")
 predictions = model.predict(x_test)
 predicted_classes = tf.argmax(predictions, axis=1)
 
-model.save('models/garrancho_mnist_v1_model.h5')
+model.save('models/garrancho_mnist_v1_model.keras')
 
 # Passo 9: Exibir as imagens de teste e previsões
 def plot_predictions_paginated(images, labels, predictions, images_per_page=10):

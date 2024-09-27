@@ -2,7 +2,7 @@ import os
 import numpy as np
 from PIL import Image
 from tensorflow import keras
-from tensorflow.keras.preprocessing import image
+from tensorflow.keras.preprocessing import image # type: ignore
 import matplotlib.pyplot as plt
 
 def resize_images(images, target_size=(28, 28)):
@@ -42,7 +42,7 @@ test_images = np.array(test_images)
 test_images_resized = resize_images(test_images)
 
 # Carrega o modelo treinado
-model = keras.models.load_model('models/garrancho_mnist_v1_model.h5')
+model = keras.models.load_model('models/garrancho_mnist_v1_model.keras')
 
 # Verifica a forma do tensor de entrada
 print("Forma do tensor de entrada:", test_images_resized.shape)

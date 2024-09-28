@@ -38,9 +38,14 @@ x_test = x_test.reshape((x_test.shape[0], 28, 28, 1))
 # Adicionar novas imagens ao conjunto de treinamento
 # Assumindo que você já tem as labels para as novas imagens
 # Exemplo: se suas novas imagens são dos dígitos 0 a 9, você deve criar as labels correspondentes
-new_labels = np.array([0, 1, 2, 3, 4, 5, 6, 7, 8, 9] * (len(new_images) // 10))  # Exemplo para 10 classes
+new_labels = []
 
-# Ajuste 'new_labels' conforme necessário, com base nas suas imagens
+for img_file in os.listdir(new_images_dir):
+    # Supondo que o nome dos arquivos seja no formato 'numero_contador' (ex: '1_1', '2_3', etc.)
+    label = int(img_file.split('_')[0])  # Extrai o número antes do primeiro underscore
+    new_labels.append(label)
+
+new_labels = np.array(new_labels)
 
 # Passo 4: Combinar os dados
 x_train = np.concatenate((x_train, new_images), axis=0)
